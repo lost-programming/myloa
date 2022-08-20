@@ -4,4 +4,15 @@ const nextConfig = {
   swcMinify: true,
 }
 
-module.exports = nextConfig
+module.exports = () => {
+  const rewrites = () => {
+    return [
+      {
+        source: '/Profile/:path',
+        destination: "https://lostark.game.onstove.com/Profile/:path",
+      },
+    ];
+  }
+
+  return { rewrites }
+}

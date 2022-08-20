@@ -6,7 +6,7 @@ import Equipment from "../../components/character/equipment";
 import Bracelet from "../../components/character/bracelet";
 
 const CharacterInfo = () => {
-  // const aaa = getCharacterInfo();
+  const aaa = getCharacterInfo();
 
   return (
     <div>

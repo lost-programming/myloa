@@ -4,10 +4,10 @@ import axios from "axios";
 
 export const getCharacterInfo = async () => {
   const data: any = await axios.get(
-    `https://lostark.game.onstove.com/Profile/Character/배부른나무늘보`,
+    '/Profile/Character/배부른나무늘보',
     {
       headers: {
-        'content-type': 'application/json; charset=utf8'
+        'Content-Type': 'text/xml',
       }
     }
   )
