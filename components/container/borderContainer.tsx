@@ -1,13 +1,13 @@
 import React from "react";
 
 interface ContainerProps {
-  width: string;
+  style: string;
   children: any;
 }
 
-const borderContainer = ({ width, children }: ContainerProps) => {
+const borderContainer = ({ style, children }: ContainerProps) => {
   return (
-    <div className={`${width} flex flex-col items-center justify-center p-3 border border-gray030 rounded-lg`}>
+    <div className={`${style} flex p-3 border border-gray030 rounded-lg`}>
       { children }
     </div>
   )

@@ -1,5 +1,5 @@
 module.exports = {
-  mode: "jit", //
+  // mode: "jit", //
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -42,25 +42,7 @@ module.exports = {
       lg: "1024px",
       xl: "1160px",
     },
-    fontSize: {
-      sm: "12px",
-      md: "14px",
-      mx: "16px",
-      lg: "18px",
-      xl: "20px",
-      "2xl": "22px",
-      "3xl": "40px",
-    },
-    fontFamily: {
-      sans: ["Graphik", "sans-serif"],
-      serif: ["Merriweather", "serif"],
-    },
     colors: {
-      S: "#FF7F7F",
-      A: "#FFBF7F",
-      B: "#FFDF7F",
-      C: "#FFFF7F",
-      D: "#BFFF7F",
       blue000: "#CAE2FC",
       blue005: "#75ADFF",
       blue010: "#609BFF",
@@ -94,6 +76,9 @@ module.exports = {
       gray085: "#141618",
       gray090: "#131415",
       gray095: "#050505",
+      ancient: "#A88B6D",
+      brown: "#3D3325",
+      brown020: "#DCC999",
       black: "#000",
       transparent: "transparent",
     },
