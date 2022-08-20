@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const getCharacterInfo = async () => {
   const data: any = await axios.get(
-    '/Profile/Character/배부른나무늘보',
+    `/Profile/Character/배부른나무늘보`,
     {
       headers: {
         'Content-Type': 'text/xml',

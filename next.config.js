@@ -8,8 +8,8 @@ module.exports = () => {
   const rewrites = () => {
     return [
       {
-        source: '/Profile/:path',
-        destination: "https://lostark.game.onstove.com/Profile/:path",
+        source: '/Profile/:path*',
+        destination: "https://lostark.game.onstove.com/Profile/:path*",
       },
     ];
   }
