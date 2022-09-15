@@ -7,7 +7,6 @@ import Bracelet from "../../components/character/bracelet";
 
 const CharacterInfo = () => {
   const aaa = getCharacterInfo();
-
   return (
     <div>
       <h2>배부른나무늘보</h2>
