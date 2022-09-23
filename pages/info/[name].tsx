@@ -4,12 +4,15 @@ import Engrave from "../../components/character/engrave";
 import { getCharacterInfo } from "../../api/character";
 import Equipment from "../../components/character/equipment";
 import Bracelet from "../../components/character/bracelet";
+import { useRouter } from "next/router";
 
 const CharacterInfo = () => {
-  const aaa = getCharacterInfo();
+  const router = useRouter();
+  const characterName = router.query.name;
+  const aaa = getCharacterInfo(router.query.name);
   return (
     <div>
-      <h2>배부른나무늘보</h2>
+      <h2>배부른나무늘보{ characterName }</h2>
       <div className="flex w-full">
         <BorderContainer style={'flex-col items-center w-1/5'}>
           <div className="w-full bg-blue010 mx-[10px] py-1 mb-[10px] text-[18px] text-white text-center rounded-2xl">
@@ -51,4 +54,4 @@ const CharacterInfo = () => {
   )
 }
 
-export default CharacterInfo;
+export default CharacterInfo
