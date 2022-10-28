@@ -7,7 +7,7 @@ interface ContainerProps {
 
 const borderContainer = ({ style, children }: ContainerProps) => {
   return (
-    <div className={`${style} flex p-3 border border-gray030 rounded-lg`}>
+    <div className={`${style} flex p-4 bg-black020 rounded-xl`}>
       { children }
     </div>
   )

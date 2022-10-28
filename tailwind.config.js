@@ -80,6 +80,7 @@ module.exports = {
       brown: "#3D3325",
       brown020: "#DCC999",
       black: "#000",
+      black020: "#1C1F26",
       transparent: "transparent",
     },
     boxShadow: {
