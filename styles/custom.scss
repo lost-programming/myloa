@@ -1,0 +1,23 @@
+.bg {
+  &-grade2 {
+    background: linear-gradient(135deg,#3d3325,#dcc999);
+  }
+  &-quGold {
+    background: #FF5E00;
+  }
+  &-quPink {
+    background: #FF00DD;
+  }
+  &-quBlue {
+    background: #0054FF;
+  }
+  &-quGreen {
+    background: #09AE09;
+  }
+  &-quOrange {
+    background: #A78300;
+  }
+  &-quRed {
+    background: #FF0000;
+  }
+}

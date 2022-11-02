@@ -12,7 +12,7 @@ const Home = () => {
         <input
           type='text'
           value={name}
-          className='w-[500px] h-[50px] p-4 border border-gray055 rounded-md bg-gray055 text-white'
+          className='w-[500px] h-[50px] p-4 border border-gray3 rounded-md bg-gray3 text-white'
           onChange={(e) => setName(e.target.value)}
           onKeyUp={(e) => {
             if (e.keyCode === 13) {

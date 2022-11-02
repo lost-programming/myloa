@@ -35,7 +35,7 @@ const CharacterInfo = () => {
             </BorderContainer>
             <div className="flex w-full">
               <BorderContainer style={'flex-col items-center w-1/5'}>
-                <div className="w-full bg-blue010 mx-[10px] py-1 mb-[10px] text-[18px] text-white text-center rounded-2xl">
+                <div className="w-full mx-[10px] py-1 mb-[10px] text-[18px] text-white text-center rounded-2xl">
                   각인
                 </div>
                 <Engrave/>
@@ -46,23 +46,20 @@ const CharacterInfo = () => {
                 <div className="flex w-full">
                   <div className="w-1/2">
                     <p className="mb-[10px] text-[18px] font-bold">장비</p>
-                    {imgList.equ.map((value: any) => {
+                    {imgList.equ.map((value: any, index: any) => {
                       return (
-                        <Equipment type={'test'} data={value}/>
+                        <Equipment key={index} type={'equ'} data={value}/>
                       )
                     })}
                   </div>
                   <div className="w-1/2">
                     <p className="mb-[10px] text-[18px] font-bold">장신구</p>
-                    {imgList.acc.map((value: any) => {
+                    {imgList.acc.map((value: any, index: number) => {
                       return (
-                        <Equipment type={'accessories'} data={value}/>
+                        <Equipment key={index} type={'accessories'} data={value}/>
                       )
                     })}
                   </div>
-                </div>
-                <div className="flex w-full border rounded mt-5">
-                  <p className="w-full my-2 mx-4 bg-blue020 text-white text-center rounded-2xl">전투 특성</p>
                 </div>
               </BorderContainer>
 

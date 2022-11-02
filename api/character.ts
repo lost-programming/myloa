@@ -1,5 +1,6 @@
 import axios from "axios";
 import { CharacterInfo } from "../type/character";
+import { qualityColor } from "../utils/dataFormat";
 const cheerio = require('cheerio');
 
 export const getCharacterInfo = async (name: any) => {
@@ -79,17 +80,29 @@ const findCharacterInfo = (target: any, variable: any) => {
   // 장비, 악세, 각인 구분해서 상태별로 푸시
   if (itemDetail.leftStr0) {
     if (itemDetail.leftStr0.search(/목걸이|귀걸이|반지/) > 0) {
+      const effectHtml = chopFront.substring(chopFront.search(`"Element_005":`), chopFront.search(`"Element_006"`)).split('value":');
+      const effects = JSON.parse(effectHtml[1].replace('},', '')).Element_001;
+
+      const engraveHtml = chopFront.substring(chopFront.search(`"Element_006":`), chopFront.search(`"Element_007"`)).split('value":')[1];
+      console.log(engraveHtml);
+      // console.log(engraveHtml.substring(engraveHtml.search('"contentStr":'), engraveHtml.search('"topStr"')));
+
+
       items.quality = itemDetail.qualityValue;
+      items.quality_color = qualityColor(itemDetail.qualityValue);
+      items.effect = effects.replace(/<BR>/g, ' ').replace(/[+]/g, ''); // 특성
       itemType = 'acc';
     } else if (itemDetail.leftStr0.search('스톤') > 0) {
       itemType = 'stone';
     } else if (itemDetail.leftStr0.search('팔찌') > 0) {
       itemType = 'pal';
     } else {
-      const list = chopFront.substring(chopFront.search(`"Element_008":`), chopFront.search(`"Element_009"`)).split('value":');
-      const setLevelData =JSON.parse(list[1].replace('},', ''));
-
+      const setInfo = chopFront.substring(chopFront.search(`"Element_008":`), chopFront.search(`"Element_009"`)).split('value":');
+      const setLevelData = JSON.parse(setInfo[1].replace('},', ''));
+      items.level = itemDetail.leftStr2.substring(itemDetail.leftStr2.indexOf('레벨 '), itemDetail.leftStr2.indexOf(' ('));
+      items.set_level = setLevelData.Element_001.replace(/FONT|COLOR|FFD200|[=<>/'#]| */g, '');
       items.quality = itemDetail.qualityValue;
+      items.quality_color = qualityColor(itemDetail.qualityValue);
       itemType = 'equ';
     }
   }
