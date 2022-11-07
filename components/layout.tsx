@@ -1,9 +1,13 @@
 import React from "react";
+import Header from "./layout/header";
 
 const Layout = ({ children }: any) => {
   return (
-    <div className="w-[1160px] h-full py-[80px] my-0 mx-auto">
-      { children }
+    <div>
+      <Header/>
+      <div className="w-[1280px] h-full py-[80px] my-0 mx-auto">
+        { children }
+      </div>
     </div>
   )
 }

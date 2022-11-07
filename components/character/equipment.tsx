@@ -1,5 +1,5 @@
 import React from "react";
-import { qualityColor } from "../../utils/dataFormat";
+import SmallTextContainer from "../../components/container/smallTextContainer";
 
 interface EquipmentProps {
   type: string;
@@ -24,12 +24,18 @@ const Equipment = ({ type, data }: EquipmentProps) => {
                 { data.name }
               </div>
               <div className="flex gap-2 text-sm text-gray2 my-[4px] tracking-wide">
-                { type === 'equ' ? data.level : data.effect }
+                { type === 'equ' ? data.level : type === 'stone' ? data.health : data.effect }
               </div>
-              <div className="flex">
-                <span className="bg-option rounded-full px-2 py-0.5 font-medium whitespace-nowrap text-[12px] text-gray2 tracking-wide">
-                  { type === 'equ' ? data.set_level.replace('Lv.', ' Lv.') : '' }
-                </span>
+              <div className="flex flex-row gap-2">
+                {type === 'equ' ?
+                  <SmallTextContainer text={data.set_level.replace('Lv.', ' Lv.')}/>
+                  :
+                  data.engraves.map((text: string, index: number) => {
+                    return (
+                      <SmallTextContainer text={text} key={index}/>
+                    )
+                  })
+                }
               </div>
             </div>
           </>
