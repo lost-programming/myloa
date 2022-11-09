@@ -55,9 +55,10 @@ export const findCharacterInfo = (target: any, variable: any) => {
       itemType = 'stone';
     } else if (itemDetail.leftStr0.search('팔찌') > 0) {
       const effects = changeHtmlToJson(chopFront, '"Element_004":', '"Element_005"');
-      console.log(effects.Element_001.replace(/<BR>/g, 'ㅢ').replace(/#f9f7d0|#99ff99|#969696|-6|-5|'20'|[a-z]|[\[\]#<>'"_=/-]/gi, '').replace(/ +/g, ' '));
+      const list = effects.Element_001.replace(/<BR>/g, 'ㅢ').replace(/#f9f7d0|#99ff99|#969696|-6|-5|'20'|[a-z]|[\[\]#<>'"_=/-]/gi, '').replace(/ +/g, ' ').split('ㅢ');
 
-      itemType = 'pal';
+      items.effects = list;
+      itemType = 'bracelet';
     } else {
       const setLevelData = changeHtmlToJson(chopFront, '"Element_008":', '"Element_009"');
 

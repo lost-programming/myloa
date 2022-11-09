@@ -96,7 +96,7 @@ const CharacterInfo = () => {
               </BorderContainer>
 
               <BorderContainer style={'items-start w-1/5'}>
-                <Bracelet/>
+                <Bracelet data={ info.bracelet }/>
               </BorderContainer>
             </div>
           </>

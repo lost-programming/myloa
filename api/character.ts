@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CharacterInfo, StoneInfo } from "../type/character";
+import { BraceletInfo, CharacterInfo, StoneInfo } from "../type/character";
 import { qualityColor, findCharacterInfo } from "../utils/dataFormat";
 const cheerio = require('cheerio');
 
@@ -30,6 +30,12 @@ export const getCharacterInfo = async (name: any) => {
           url: '',
           quality: '90',
           quality_color: 'bg-quPink'
+        },
+        bracelet: {
+          url: '',
+          name: '',
+          color: '',
+          effects: []
         }
       };
       const basic = $("#profile-ability > div.profile-ability-basic > ul > li > span").text();
@@ -55,6 +61,9 @@ export const getCharacterInfo = async (name: any) => {
             break;
           case 'stone':
             chData.stone = <StoneInfo>info;
+            break;
+          case 'bracelet':
+            chData.bracelet = <BraceletInfo>info;
             break;
           default:
             break;

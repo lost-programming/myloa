@@ -18,6 +18,7 @@ const InputContainer = ({ style }: inputContainerType) => {
         className={`${ style } p-4 border border-gray3 rounded-md bg-gray3 text-white`}
         onChange={(e) => setName(e.target.value)}
         onKeyUp={(e) => {
+          if (!name) return false;
           if (e.keyCode === 13) {
             router.push(`/info/${name}`);
             setName('');
@@ -26,7 +27,10 @@ const InputContainer = ({ style }: inputContainerType) => {
       />
       <SearchIcon
         style={'absolute right-[15px] text-white cursor-pointer'}
-        onClick={() => router.push(`/info/${name}`)}
+        onClick={() => {
+          if (!name) return false;
+          router.push(`/info/${name}`)
+        }}
       />
     </div>
   )

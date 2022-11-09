@@ -11,6 +11,7 @@ export interface CharacterInfo  {
   equ: any[];
   acc: any[];
   stone: StoneInfo;
+  bracelet: BraceletInfo
 }
 
 export interface StoneInfo {
@@ -21,4 +22,11 @@ export interface StoneInfo {
   url: string;
   quality: string;
   quality_color: string;
+}
+
+export interface BraceletInfo {
+  color: string;
+  url: string;
+  name: string;
+  effects: any[];
 }
