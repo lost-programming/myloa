@@ -1,5 +1,6 @@
 import React from "react";
 import SmallTextContainer from "../../components/container/smallTextContainer";
+import { itemBackground } from "../../utils/dataFormat";
 
 interface EquipmentProps {
   type: string;
@@ -15,7 +16,7 @@ const Equipment = ({ type, data }: EquipmentProps) => {
             <div className="rounded-lg overflow-hidden w-14">
               <img
                 src={ data.url }
-                className="bg-grade2 w-full h-[3.25rem]"
+                className={`${itemBackground(data.color)} w-full h-[3.25rem]`}
               />
               <div className={`${data.quality_color} h-5 text-center text-sm`}>{ data.quality }</div>
             </div>

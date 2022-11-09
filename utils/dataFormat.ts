@@ -14,6 +14,23 @@ export const qualityColor = (quality: number) => {
   }
 }
 
+export const itemBackground = (code: string) => {
+  switch (code) {
+    case '#F99200':
+      return 'bg-grade4';
+    case '#FA5D00':
+      return 'bg-grade3';
+    case '#E3C7A1':
+      return 'bg-grade2';
+    case '#00B0FA':
+      return 'bg-grade5';
+    case '#ce43fc':
+      return 'bg-grade6';
+    default:
+      return 'bg-grade2';
+  }
+}
+
 export const findCharacterInfo = (target: any, variable: any) => {
   const items: any = {};
   const chopFront = target.substring(target.search(variable)+variable.length, target.length);
@@ -63,7 +80,7 @@ export const findCharacterInfo = (target: any, variable: any) => {
       const setLevelData = changeHtmlToJson(chopFront, '"Element_008":', '"Element_009"');
 
       items.level = itemDetail.leftStr2.substring(itemDetail.leftStr2.indexOf('레벨 '), itemDetail.leftStr2.indexOf(' ('));
-      items.set_level = setLevelData.Element_001.replace(/FONT|COLOR|FFD200|[=<>/'#]| */g, '');
+      items.set_level = setLevelData.Element_001 ? setLevelData.Element_001.replace(/FONT|COLOR|FFD200|[=<>/'#]| */g, '') : '';
       items.quality = itemDetail.qualityValue;
       items.quality_color = qualityColor(itemDetail.qualityValue);
       itemType = 'equ';
@@ -77,12 +94,17 @@ export const findCharacterInfo = (target: any, variable: any) => {
 export const searchEngraves = (list: string) => {
   const engraveHtml = list.substring(list.search(`"Element_006":`), list.search(`"Element_007"`)).split('value":')[1];
   const engraveJson = JSON.parse(engraveHtml.substring(engraveHtml.search('"contentStr":'), engraveHtml.search('"topStr"')).replace('"contentStr": ', '').replace(/,\s*$/, ''));
-  const tem = [engraveJson.Element_000.contentStr, engraveJson.Element_001.contentStr, engraveJson.Element_002.contentStr];
-  const enList = tem.map((value: string) => {
-    return value.replace(/활성화|[\[\]<>+.,"'=#/]|FE2E2E|[a-z]|활성도 /ig, '').replace(/ /, '');
-  });
+
+  const enList = [];
+  engraveJson.Element_000 ? enList.push(replaceText(engraveJson.Element_000.contentStr)) : '';
+  engraveJson.Element_001 ? enList.push(replaceText(engraveJson.Element_001.contentStr)) : '';
+  engraveJson.Element_002 ? enList.push(replaceText(engraveJson.Element_002.contentStr)) : '';
 
   return enList;
+}
+
+const replaceText = (text: string) => {
+  return text.replace(/활성화|[\[\]<>+.,"'=#/]|FE2E2E|[a-z]|활성도 /ig, '').replace(/ /, '');
 }
 
 export const changeHtmlToJson = (html: string, range1: string, range2: string) => {

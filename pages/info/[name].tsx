@@ -90,13 +90,16 @@ const CharacterInfo = () => {
                         <Equipment key={ index } type={ 'accessories' } data={ value }/>
                       )
                     })}
-                    <Equipment type={ 'stone' } data={ info.stone }/>
+                    {info.stone.name && <Equipment type={ 'stone' } data={ info.stone }/> }
                   </div>
                 </div>
               </BorderContainer>
 
               <BorderContainer style={'items-start w-1/5'}>
-                <Bracelet data={ info.bracelet }/>
+                {info.bracelet.name ?
+                  <Bracelet data={ info.bracelet }/> :
+                  <div>no bracelet</div>
+                }
               </BorderContainer>
             </div>
           </>
