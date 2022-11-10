@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BraceletInfo, CharacterInfo, StoneInfo } from "../type/character";
-import { qualityColor, findCharacterInfo } from "../utils/dataFormat";
+import { qualityColor, findCharacterInfo, findGemEffect } from "../utils/dataFormat";
 const cheerio = require('cheerio');
 
 export const getCharacterInfo = async (name: any) => {
@@ -10,6 +10,8 @@ export const getCharacterInfo = async (name: any) => {
     ).then((res: any) => {
       const $ = cheerio.load(res.data);
       const $bodyList = $("div.profile-equipment__slot").children("div");
+      const gemList = $("div.jewel__wrap > span");
+      const gemEffectList = $("div.jewel-effect__list > div > ul > li");
       const chData: CharacterInfo = {
         name: $("div.profile-character-info > span.profile-character-info__name").text(),
         job: $("#lostark-wrapper > div > main > div > div.profile-character-info > img").attr("alt"),
@@ -36,12 +38,14 @@ export const getCharacterInfo = async (name: any) => {
           name: '',
           color: '',
           effects: []
-        }
+        },
+        gems: []
       };
       const basic = $("#profile-ability > div.profile-ability-basic > ul > li > span").text();
       const battle = $("#profile-ability > div.profile-ability-battle > ul > li > span").text();
       // 장착된 장비, 카드, 보석 이름 및 효과 정보
       const equipmentInfo = $('script').get()[2].children[0].data;
+      chData.gems = findGemEffect(equipmentInfo, gemList, gemEffectList);
       // 장착중인 아이템 이미지 가져오기
       $bodyList.each((i: any, el: any) =>  {
         if (!el.children[0]) { return false; }

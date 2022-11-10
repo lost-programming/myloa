@@ -113,3 +113,38 @@ export const changeHtmlToJson = (html: string, range1: string, range2: string) =
 
   return info;
 }
+
+export const findGemEffect = (script: any, gemImgList: any, gemEffectsList: any) => {
+  const gemList: any = [];
+  const effectList: any = [];
+  gemImgList.each((i: any, el: any) => {
+    const variable = el.attribs['data-item'] + `":`;
+    const chopFront = script.substring(script.search(variable)+variable.length, script.length);
+    const gemName = changeHtmlToJson(chopFront, '"Element_000":', '"Element_001"');
+    const imgData = {
+      name: gemName.replace(/[^0-9ㄱ-힁 ]|99200/gi, '').replace(/ +/, ''),
+      url: el.children[3].children[0].attribs.src,
+      level: Number(gemName.replace(/[^0-9]|99200/g, '')),
+      type: gemName.replace(/[^0-9ㄱ-힁 ]|99200/gi, '').replace(/레벨|의|보석|[0-9]| /g, '')
+    }
+    gemList.push(imgData);
+  })
+  gemEffectsList.each((i: any, el: any) => {
+    const effectData = {
+      skill_img: el.children[1].children[1].attribs.src,
+      skill_name: el.children[3].children[0].data,
+      gemEffect: el.children[5].children[1].data.replace(/ /, '')
+    }
+    effectList.push(effectData);
+  })
+  for (let i = 0; i < gemList.length; i++) {
+    Object.assign(gemList[i], effectList[i]);
+  }
+  gemList.sort((a: any, b: any) => {
+    return b.level - a.level
+  })
+  gemList.sort((a: any, b: any) => {
+    return a.type < b.type ? -1 : a.type > b.type ? 1 : 0;
+  })
+  return gemList;
+}

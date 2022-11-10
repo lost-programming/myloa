@@ -25,7 +25,12 @@ const CharacterInfo = () => {
 
   return (
     <div>
-      {info &&
+      {isLoading ?
+        <div className="w-full h-[100vh] flex items-center justify-center z-[9999]">
+          <p>Loading</p>
+        </div>
+        :
+        info &&
         (
           <>
             <BorderContainer style={'w-full mb-[20px] items-center'}>
@@ -59,7 +64,7 @@ const CharacterInfo = () => {
                     <p className="text-gray2">서버</p>
                     <p>{ info.server }</p>
                     <p className="text-gray2">길드</p>
-                    <p>{ info.guild }</p>
+                    <p>{ info.guild !== '길드-' ? info.guild : '--' }</p>
                   </div>
                 </BorderContainer>
                 <BorderContainer style={'flex-col gap-2'}>

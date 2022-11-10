@@ -11,7 +11,8 @@ export interface CharacterInfo  {
   equ: any[];
   acc: any[];
   stone: StoneInfo;
-  bracelet: BraceletInfo
+  bracelet: BraceletInfo;
+  gems: any[];
 }
 
 export interface StoneInfo {
