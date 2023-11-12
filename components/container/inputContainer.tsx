@@ -25,13 +25,13 @@ const InputContainer = ({ style }: inputContainerType) => {
           }
         }}
       />
-      <SearchIcon
-        style={'absolute right-[15px] text-white cursor-pointer'}
-        onClick={() => {
-          if (!name) return false;
-          router.push(`/info/${name}`)
-        }}
-      />
+      {/*<SearchIcon*/}
+      {/*  style={'absolute right-[15px] text-white cursor-pointer'}*/}
+      {/*  onClick={() => {*/}
+      {/*    if (!name) return false;*/}
+      {/*    router.push(`/info/${name}`)*/}
+      {/*  }}*/}
+      {/*/>*/}
     </div>
   )
 }
