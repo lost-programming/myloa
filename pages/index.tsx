@@ -10,7 +10,7 @@ const Home = () => {
 
       <div className="flex justify-center mt-8">
         <LinkButton
-          text={'일일 에포나 정보'} style={'w-[120px] h-[48px]'}
+          text={'일일 에포나 정보 test'} style={'w-[120px] h-[48px]'}
           onClick={() => router.push('/info/배부른나무늘보')}
         />
       </div>
