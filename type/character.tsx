@@ -24,31 +24,29 @@ export interface CharacterProfileTypes {
   ItemMaxLevel: string; // 아이템 최고 레벨
   PvpGradeName: string; // pvp 등급
   ServerName: string; // 서버 이름
-  Stats: string[]; // 스탯
-  Tendencies: string[] // 성향?
+  Stats: StatsType[]; // 스탯
+  Tendencies: TendenciesType[] // 성향?
   Title: string; // 칭호
   TotalSkillPoint: number; // 총 합 스킬포인트
   TownLevel: number; // 영지 레벨
-  TownName: number; // 영지 이름
+  TownName: string; // 영지 이름
   UsingSkillPoint: number; // 사용중인 스킬포인트
 }
 
-export interface CharacterInfo  {
-  name: string;
-  job: string;
-  job_img: string;
-  item_level: number;
-  battle_level: string;
-  expedition: string;
-  guild: string;
-  server: string;
-  engraves: any[];
-  equ: any[];
-  acc: any[];
-  stone: StoneInfo;
-  bracelet: BraceletInfo;
-  gems: any[];
+// 스탯 Type
+export interface StatsType {
+  Type: string;
+  Value: string;
+  Tooltip: string[];
 }
+
+// 성향 Type
+export interface TendenciesType {
+  Type: string;
+  Point: number;
+  MaxPoint: number;
+}
+
 
 export interface StoneInfo {
   color: string;
