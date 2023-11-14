@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
-import BorderContainer from "../../components/container/borderContainer";
-import Engrave from "../../components/character/engrave";
-import { getCharacterInfo } from "../../api/character";
-import Equipment from "../../components/character/equipment";
-import Bracelet from "../../components/character/bracelet";
 import { useRouter } from "next/router";
+import CharacterProfile from "../../components/character/profile";
 import { useGetCharacterInfo } from "../../hooks/query";
+import { CharacterResponseTypes } from "../../type/character";
+
+interface Types {
+  data: CharacterResponseTypes | undefined;
+  isSuccess: boolean;
+}
 
 const CharacterInfo = () => {
   const router = useRouter();
-  const characterName = router.query.name;
-  const { data } = useGetCharacterInfo('배부른나무늘보', 'gems');
+  const { data, isSuccess }: Types = useGetCharacterInfo('배부른나무늘보');
+
+  if (!isSuccess) return (<div>Loading...</div>);
 
   return (
-    <div>
-      <div className="">
-        캐릭터 정보 창
-        이름 이미지  레벨 등
-        캐릭터 정보 { characterName }
-      </div>
+    <div className="w-full relative">
+      <CharacterProfile profile={ data?.ArmoryProfile }/>
       <div className="flex space-x-4">
         <div className="basis-1/3">
           각인
@@ -31,4 +30,4 @@ const CharacterInfo = () => {
   )
 };
 
-export default CharacterInfo
+export default CharacterInfo;
