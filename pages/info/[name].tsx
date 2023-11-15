@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import CharacterProfile from "../../components/character/profile";
 import { useGetCharacterInfo } from "../../hooks/query";
 import { CharacterResponseTypes } from "../../type/character";
+import Stats from "../../components/character/stats";
 
 interface Types {
   data: CharacterResponseTypes | undefined;
@@ -16,11 +17,11 @@ const CharacterInfo = () => {
   if (!isSuccess) return (<div>Loading...</div>);
 
   return (
-    <div className="w-full relative">
+    <div className="relative flex flex-col w-full space-y-4">
       <CharacterProfile profile={ data?.ArmoryProfile }/>
       <div className="flex space-x-4">
-        <div className="basis-1/3">
-          각인
+        <div className="flex flex-[3_1_0%] flex-col gap-4">
+          <Stats/>
         </div>
         <div className="basis-2/3">
           장비

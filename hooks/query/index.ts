@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "../keys";
 import { getCharacterInfo } from "../../api/character";
 import { CharacterResponseTypes } from "../../type/character";

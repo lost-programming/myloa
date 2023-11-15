@@ -9,6 +9,6 @@ export const getCharacterInfo = async (name: any) => {
     const response = await axios.get(`/armories/characters//${name}`);
     return response.data;
   } catch (e) {
-    console.log(e);
+    return e;
   }
 };
