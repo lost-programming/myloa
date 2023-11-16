@@ -20,8 +20,8 @@ const CharacterInfo = () => {
     <div className="relative flex flex-col w-full space-y-4">
       <CharacterProfile profile={ data?.ArmoryProfile }/>
       <div className="flex space-x-4">
-        <div className="flex flex-[3_1_0%] flex-col gap-4">
-          <Stats/>
+        <div className="flex w-full flex-[0_1_14rem] px-0 flex-col gap-4 min-w-[12.5rem]">
+          <Stats statList={ data?.ArmoryProfile?.Stats }/>
         </div>
         <div className="basis-2/3">
           장비

@@ -1,3 +1,8 @@
+// string sum
+export const sumString = (s1: string, s2: string) => {
+  if (s1 && s2) return +s1 + +s2;
+}
+
 export const qualityColor = (quality: number) => {
   if (quality === 100) {
     return 'bg-quGold';
