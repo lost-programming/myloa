@@ -2,13 +2,19 @@
 export interface CharacterResponseTypes {
   ArmoryAvatars: any;
   ArmoryCard: any;
-  ArmoryEngraving: any;
+  ArmoryEngraving: CharacterEngravingTypes;
   ArmoryEquipment: any;
   ArmoryGem: any;
-  ArmoryProfile: CharacterProfileTypes | undefined;
+  ArmoryProfile: CharacterProfileTypes;
   ArmorySkills: any;
   Collectibles: any;
   ColosseumInfo: any;
+}
+
+// 공식 API 캐릭터 사용중인 각인 Type
+export interface CharacterEngravingTypes {
+  Effects: EngravingType[];
+  Engravings: EngravingBookType[];
 }
 
 // 공식 API 캐릭터 Profile Type
@@ -47,20 +53,16 @@ export interface TendenciesType {
   MaxPoint: number;
 }
 
-
-export interface StoneInfo {
-  color: string;
-  engraves : any[];
-  health: string;
-  name: string;
-  url: string;
-  quality: string;
-  quality_color: string;
+// 적용중인 각인 Type
+export interface EngravingType {
+  Icon: string;
+  Name: string;
+  Description: string;
 }
 
-export interface BraceletInfo {
-  color: string;
-  url: string;
-  name: string;
-  effects: any[];
+// 각인서 Type
+export interface EngravingBookType {
+  Slot: number;
+  Name: string;
+  Tooltip: string;
 }

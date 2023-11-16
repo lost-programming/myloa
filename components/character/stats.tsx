@@ -15,14 +15,14 @@ const Stats = ({ statList }: StatsPropsType) => {
     if (statList) {
       setList(
         statList
-          .filter((v) => { return Number(v.Value) >= 200;})
+          .filter((v) => { return Number(v.Value) >= 200; })
           .sort((a, b) => Number(b.Value) - Number(a.Value))
       );
     }
   }, [statList]);
 
   return (
-    <DefaultContainer>
+    <DefaultContainer style="gap-4">
       {/* 주스탯 2개 표시 */}
       <div className="flex justify-between w-full gap-3">
         <div className="flex-1">
