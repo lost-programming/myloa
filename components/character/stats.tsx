@@ -7,6 +7,7 @@ interface StatsPropsType {
   statList: StatsType[] | undefined;
 }
 
+{/* TODO: 클릭 했을때 팝업창으로 전체 스텟 확인 기능 추가 */}
 const Stats = ({ statList }: StatsPropsType) => {
   const [list, setList] = useState<StatsType[]>([]);
 

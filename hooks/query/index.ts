@@ -12,6 +12,9 @@ export const useGetCharacterInfo = (name: string) => {
       gcTime: 100000,
     }
   );
-  console.log(data);
+
+  if (isSuccess) {
+    console.log(data);
+  }
   return { data, isSuccess };
 };

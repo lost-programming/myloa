@@ -3,7 +3,7 @@ export interface CharacterResponseTypes {
   ArmoryAvatars: any;
   ArmoryCard: any;
   ArmoryEngraving: CharacterEngravingTypes;
-  ArmoryEquipment: any;
+  ArmoryEquipment: EquipmentType[];
   ArmoryGem: any;
   ArmoryProfile: CharacterProfileTypes;
   ArmorySkills: any;
@@ -64,5 +64,14 @@ export interface EngravingType {
 export interface EngravingBookType {
   Slot: number;
   Name: string;
+  Tooltip: string;
+}
+
+// 장착중인 장비 Type
+export interface EquipmentType {
+  Type: string;
+  Name: string;
+  Icon: string;
+  Grade: string;
   Tooltip: string;
 }

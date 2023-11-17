@@ -1,7 +1,42 @@
+import { EquipmentType } from "../type/character";
+
 // string sum
 export const sumString = (s1: string, s2: string) => {
   if (s1 && s2) return +s1 + +s2;
+};
+
+// 장비 데이터 재가공
+export const equipmentDataUpdate = (data: EquipmentType[]) => {
+  const itemText = ["무기", "투구", "상의", "하의", "장갑", "어깨"];
+  const accText = ["목걸이", "귀걸이", "반지", "어빌리티 스톤"];
+
+  const eqData = {
+    item: data.filter((v) => itemText.includes(v.Type)).map((v) => weaponDataInfo(v)),
+    acc: data.filter((v) => accText.includes(v.Type)),
+  }
+
+  console.log(eqData);
 }
+
+// 무기, 방어구 정보 가공
+export const weaponDataInfo = (wData: EquipmentType) => {
+  const tooltip = JSON.parse(wData.Tooltip);
+  const item = {
+    type: wData.Type,
+    grade: wData.Grade,
+    icon: wData.Icon,
+    enhance: wData.Name.replace(/\D| /g, ''),
+    itemLevel: tooltip.Element_001.value.leftStr2.replace(/[ㄱ-힁]|(<(.*?)>|([(](.*?)[)])|\s)/gi, ''),
+    quality: tooltip.Element_001.value.qualityValue,
+  }
+
+  return item;
+}
+
+// 엘릭서 정보 가져오기
+export const getElixirInfo = () => {
+
+};
 
 export const qualityColor = (quality: number) => {
   if (quality === 100) {
