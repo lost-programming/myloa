@@ -29,9 +29,20 @@ const Equipments = ({ items }: EquipmentsPropType) => {
         <h4 className="text-base">장비</h4>
         {
           itemInfo?.total_set?.map((v: any) => {
-            return (<SmallBoxText text={ v[0] + ' ' + v[1] } />)
+            return (<SmallBoxText text={ v[0] + ' ' + v[1] } key={ v[0] } />)
           })
         }
+      </div>
+      <div className="flex">
+        <div className="flex flex-col gap-2 grow">
+          {
+            itemInfo?.item?.map((v: any) => {
+              return (
+                <div key={ v.type }>{ v.type }</div>
+              )
+            })
+          }
+        </div>
       </div>
     </DefaultContainer>
   )
