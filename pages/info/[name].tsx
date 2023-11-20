@@ -14,7 +14,8 @@ interface Types {
 
 const CharacterInfo = () => {
   const router = useRouter();
-  const { data, isSuccess }: Types = useGetCharacterInfo('배부른나무늘보');
+  // TODO: 새로고침시 router.query.name 없을 경우에 오류 추후 수정
+  const { data, isSuccess }: Types = useGetCharacterInfo(router?.query?.name ? router.query.name : '');
 
   if (!isSuccess) return (<div>Loading...</div>);
 
@@ -27,7 +28,7 @@ const CharacterInfo = () => {
           <Engraving engraving={ data?.ArmoryEngraving }/>
         </div>
         <div className="flex flex-col flex-1 gap-4 md:w-auto">
-          <Equipments list={ data?.ArmoryEquipment ? data.ArmoryEquipment : [] }/>
+          <Equipments items={ data?.ArmoryEquipment ? data.ArmoryEquipment : [] }/>
         </div>
       </div>
     </div>

@@ -1,25 +1,37 @@
-import DefaultContainer from "../container/defaultContainer";
+import { useEffect, useState } from "react";
+
 import { EquipmentType } from "../../type/character";
-import { useEffect } from "react";
+import DefaultContainer from "../container/defaultContainer";
 import { equipmentDataUpdate } from "../../utils/dataFormat";
+import SmallBoxText from "../text/smallBoxText";
 
 interface EquipmentsPropType {
-  list: EquipmentType[];
+  items: EquipmentType[];
 }
 
-const Equipments = ({ list }: EquipmentsPropType) => {
+const Equipments = ({ items }: EquipmentsPropType) => {
+  const [itemInfo, setItemInfo] = useState<any>();
+
   useEffect(() => {
-    if (list?.length > 0) {
-      equipmentDataUpdate(list);
-      console.log(JSON.parse(list[1]?.Tooltip));
+    if (items?.length > 0) {
+      setItemInfo(equipmentDataUpdate(items));
     }
-  }, [list]);
+  }, [items]);
+
+  useEffect(() => {
+    console.log(itemInfo);
+  }, [itemInfo]);
 
   return (
     <DefaultContainer>
       {/* 세트 효과, 품질 평균, 악세 특성합 */}
       <div className="flex items-center gap-3">
-         <h4 className="text-base">장비</h4>
+        <h4 className="text-base">장비</h4>
+        {
+          itemInfo?.total_set?.map((v: any) => {
+            return (<SmallBoxText text={ v[0] + ' ' + v[1] } />)
+          })
+        }
       </div>
     </DefaultContainer>
   )

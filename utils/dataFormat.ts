@@ -1,4 +1,5 @@
 import { EquipmentType } from "../type/character";
+import { set } from "immutable";
 
 // string sum
 export const sumString = (s1: string, s2: string) => {
@@ -10,33 +11,84 @@ export const equipmentDataUpdate = (data: EquipmentType[]) => {
   const itemText = ["무기", "투구", "상의", "하의", "장갑", "어깨"];
   const accText = ["목걸이", "귀걸이", "반지", "어빌리티 스톤"];
 
-  const eqData = {
+  let eqData: any = {
     item: data.filter((v) => itemText.includes(v.Type)).map((v) => weaponDataInfo(v)),
     acc: data.filter((v) => accText.includes(v.Type)),
-  }
+    total_set: [],
+  };
 
-  console.log(eqData);
-}
+  // 에스더 무기일 경우 장갑 세트 효과를 부여
+  eqData.item = eqData.item.map((v: any) => {
+    if (v.grade === "에스더") return {...v, set: { name: eqData.item[4].set.name, stage: eqData.item[4].set.stage}};
+    else return v;
+  });
+
+  // 세트 효과 구분 및 정리
+  eqData.total_set = Object.entries(eqData.item.reduce((acc: any, cur: any) => {
+    if (!acc[cur.set.name]) acc[cur.set.name] = cur.set.stage;
+    else acc[cur.set.name] += cur.set.stage;
+    return acc;
+  }, {}));
+
+  return eqData;
+};
 
 // 무기, 방어구 정보 가공
 export const weaponDataInfo = (wData: EquipmentType) => {
   const tooltip = JSON.parse(wData.Tooltip);
+  const indentList = Object.entries(tooltip).filter((v: any) => v[1].type === "IndentStringGroup");
+
   const item = {
     type: wData.Type,
     grade: wData.Grade,
     icon: wData.Icon,
     enhance: wData.Name.replace(/\D| /g, ''),
-    itemLevel: tooltip.Element_001.value.leftStr2.replace(/[ㄱ-힁]|(<(.*?)>|([(](.*?)[)])|\s)/gi, ''),
+    itemLevel: tooltip.Element_001.value.leftStr2.replace(/[ㄱ-힁]|(<(.*?)>|([(](.*?)[)])|\s)/gi, ""),
     quality: tooltip.Element_001.value.qualityValue,
-  }
+    set: getSetItemInfo(tooltip),
+    elixir: getElixirInfo(indentList, "option"),
+    total_elixir: getElixirInfo(indentList, "total"),
+    transcend: getTranscend(indentList),
+  };
 
   return item;
+};
+
+// 세트 효과 정보 추출
+export const getSetItemInfo = (tooltip: any) => {
+  let setInfo: any = Object.entries(tooltip).filter((v: any) => v[1].type === "ItemPartBox").filter((v:any) => v[1].value.Element_000.includes("세트"));
+  setInfo = setInfo[0][1].value.Element_001.replace(/(<(.*?)>|([(](.*?)[)])|(\[(.*?)])|\s)/gi, "").split("Lv.");
+  return { name: setInfo[0], stage: setInfo[1] };
 }
 
-// 엘릭서 정보 가져오기
-export const getElixirInfo = () => {
+// 엘릭서 정보 추출
+export const getElixirInfo = (tooltip: any, type: string) => {
+  if (type === "option") {
+    let elixirList: any = tooltip
+      .map((v: any) => v[1].value.Element_000.topStr.includes("엘릭서") ? v[1].value.Element_000.contentStr : "")
+      .filter((v: any) => v !== "");
 
+    if (elixirList.length > 0) {
+      elixirList = Object.values(elixirList[0]).map((v: any) => v.contentStr.split('<br>'));
+      elixirList = elixirList.map((v: any) => v[0].replace(/(<(.*?)>|([(](.*?)[)])|(\[(.*?)])|\s)/gi, "").split("Lv."));
+      return elixirList;
+    }
+  } else {
+    const total = tooltip.filter((v: any) => v[1].value.Element_000.topStr.includes("연성 추가 효과"));
+    if (total.length> 0) {
+      return total[0][1]?.value.Element_000.topStr.replace(/(<(.*?)>|(\[(.*?)])|["연성 추가 효과"]|\s)/gi, "");
+    }
+  }
 };
+
+// 초월 정보 추출
+export const getTranscend = (tooltip: any) => {
+  const transcendList = tooltip.filter((v: any) => v[1].value.Element_000.topStr.includes("초월"));
+  if (transcendList.length > 0) {
+    const option = transcendList[0][1].value.Element_000.topStr.replace(/(<(.*?)>|([(](.*?)[)])|(\[(.*?)]))/gi, "").replace(/\s/, "").split(" ");
+    return { stage: option[0], count: option[1] };
+  }
+}
 
 export const qualityColor = (quality: number) => {
   if (quality === 100) {

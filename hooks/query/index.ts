@@ -4,7 +4,7 @@ import { getCharacterInfo } from "../../api/character";
 import { CharacterResponseTypes } from "../../type/character";
 
 // 캐릭터 정보 조회
-export const useGetCharacterInfo = (name: string) => {
+export const useGetCharacterInfo = (name: string | string[]) => {
   const { data, isSuccess } = useQuery<CharacterResponseTypes>({
       queryKey: [QUERY_KEYS.GET_CHARACTER_INFO, name],
       queryFn: () => getCharacterInfo(name),

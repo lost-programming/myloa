@@ -75,3 +75,8 @@ export interface EquipmentType {
   Grade: string;
   Tooltip: string;
 }
+
+// 커스텀 장비 정보 Type
+export interface customEquipmentType {
+
+}

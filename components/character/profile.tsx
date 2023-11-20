@@ -26,7 +26,7 @@ const CharacterProfile = ({ profile }: ProfileProps) => {
       <div className="flex justify-between mt-[30px]">
         <div className="flex flex-col">
           <span className="text-2xl">{ profile?.CharacterName }</span>
-          <span className="text-base opacity-70">{ profile?.Title }</span>
+          <span className="text-base color-gray1">{ profile?.Title }</span>
         </div>
         <div className="flex flex-col items-end space-y-2">
           <RowBoxText title={ profile?.GuildName } boxText="길드" />

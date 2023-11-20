@@ -6,7 +6,7 @@ interface SmallBoxTextType {
 
 const SmallBoxText = ({ text }: SmallBoxTextType) => {
   return (
-    <span className="text-center text-xs px-2.5 py-1 leading-snug rounded-md bg-white bg-opacity-10 opacity-90">
+    <span className="text-center text-xs px-2.5 py-1 leading-snug rounded-md bg-white bg-opacity-10 color-gray1">
       { text }
     </span>
   )
