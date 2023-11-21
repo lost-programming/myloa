@@ -19,8 +19,8 @@ const Accessories = ({ acc }: AccessoriesPropType) => {
           {/* 장신구 이름, 스탯, 품질  */}
           <div className="flex items-center">
             <span className="w-fit mr-[8px]">{ acc.name }</span>
-            { acc.stat?.map((v) =>
-              <SmallColorText text={ v } style="px-2 mr-[4px] color-gray1 leading-snug border border-[#464c56]" key={ v }/>
+            { acc.stat?.map((stat) =>
+              <SmallColorText text={ stat } style="px-2 mr-[4px] color-gray1 leading-snug border border-[#464c56]" key={ stat }/>
             )}
             { acc.type !== "어빌리티 스톤" &&
               <SmallColorText text={ String(acc.quality) } style={`w-[2.5em] ml-[4px] text-white ${ qualityColor(acc.quality) }`}/>
@@ -29,7 +29,9 @@ const Accessories = ({ acc }: AccessoriesPropType) => {
           {/* 각인 표시 */}
           <div className="flex items-center last:bg-red05">
             {
-              acc.engraves?.map((v) => <SmallColorText text={ v } style="w-fit px-2 py-0.5 mr-[8px] bg-black1" key={ v.replace(/\d/g, "") }/>)
+              acc.engraves?.map((engrave) =>
+                <SmallColorText text={ engrave } style="w-fit px-2 py-0.5 mr-[8px] bg-black1" key={ engrave.replace(/\d/g, "") }/>
+              )
             }
           </div>
         </div>
