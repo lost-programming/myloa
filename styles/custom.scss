@@ -32,11 +32,34 @@
   &-quRed {
     background: #FF0000;
   }
+  // 검정 계열
+  &-black1 {
+    background: #2b313a;
+  }
+  // 회색 계열
+  &-gray1 {
+    background: #c2c2cc;
+  }
+  // 빨간 계열
+  &-red05 {
+    background: rgba(254,46,46,0.5);
+  }
 }
 
 .color {
   // 회색 계열
   &-gray1 {
     color: #c2c2cc
+  }
+  // 금색 계열
+  &-gold1 {
+    color: #997b3b;
+  }
+  &-gold2 {
+    color: #eddab3;
+  }
+  // 파랑 계역
+  &-blue1 {
+    color: #3cf2e6;
   }
 }

@@ -1,4 +1,6 @@
 // 공식 API Response
+import { getElixirInfo, getSetItemInfo, getTranscend } from "../utils/dataFormat";
+
 export interface CharacterResponseTypes {
   ArmoryAvatars: any;
   ArmoryCard: any;
@@ -76,7 +78,34 @@ export interface EquipmentType {
   Tooltip: string;
 }
 
+// 커스텀 장비, 악세 response
+export interface customItemsType {
+  acc: customAccType[];
+  item: customEquipmentType[];
+  total_set: any[];
+}
+
 // 커스텀 장비 정보 Type
 export interface customEquipmentType {
+  type: string;
+  grade: string;
+  icon: string
+  enhance: string;
+  itemLevel: string;
+  quality: number,
+  set?: { name: string | undefined; stage: string | undefined; };
+  elixir?: string[];
+  total_elixir?: string;
+  transcend?: { stage: string; count: string; };
+}
 
+// 커스텀 악세 정보 Type
+export interface customAccType {
+  type: string;
+  grade: string;
+  icon: string;
+  name: string;
+  quality: number;
+  engraves: string[];
+  stat: string[];
 }
