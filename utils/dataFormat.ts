@@ -131,7 +131,8 @@ export const getEngrave = (tooltip: any) => {
 // 팔찌 정보
 export const getBracelet = (item: any) => {
   const tooltip = JSON.parse(item[0].Tooltip);
-  let effectList = tooltip.Element_004.value.Element_001.split("<BR>").map((v: any) => v.replace(/(<(.*?)>)|[+]|([(](.*?)[)])/gi, "").trim());
+  // https://ojjy.tistory.com/106 < 정규식 참고
+  let effectList = tooltip.Element_004.value.Element_001.split("<BR>").map((v: any) => v.replace(/(<(.*?)>)|[+]|([(](.*?)[)])|(].*$)/gi, "").trim());
   console.log(effectList);
   const bracelet = {
     type: item[0].Type,
