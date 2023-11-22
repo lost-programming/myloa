@@ -27,26 +27,26 @@ const Stats = ({ statList }: StatsPropsType) => {
       {/* 주스탯 2개 표시 */}
       <div className="flex justify-between w-full gap-3">
         <div className="flex-1">
-          <p className="text-sm color-gray1">{ list[2]?.Type }</p>
+          <p className="text-sm text-gray1">{ list[2]?.Type }</p>
           <p className="text-xl">{ list[2]?.Value }</p>
         </div>
         <div className="flex-1">
-          <p className="text-sm color-gray1">{ list[3]?.Type }</p>
+          <p className="text-sm text-gray1">{ list[3]?.Type }</p>
           <p className="text-xl">{ list[3]?.Value }</p>
         </div>
       </div>
       {/* 공, 체방 표시 */}
       <div className="flex flex-col w-full text-sm">
         <div className="flex justify-between">
-          <p className="color-gray1">특성합</p>
+          <p className="text-gray1">특성합</p>
           <p>{ sumString(list[2]?.Value, list[3]?.Value) }</p>
         </div>
         <div className="flex justify-between mt-[8px]">
-          <p className="color-gray1">공격력</p>
+          <p className="text-gray1">공격력</p>
           <p>{ list[1]?.Value }</p>
         </div>
         <div className="flex justify-between">
-          <p className="color-gray1">최대 생명력</p>
+          <p className="text-gray1">최대 생명력</p>
           <p>{ list[0]?.Value }</p>
         </div>
       </div>

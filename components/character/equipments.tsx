@@ -49,9 +49,9 @@ const Equipments = ({ items }: EquipmentsPropType) => {
         {/*  */}
         <div className="flex flex-col w-[50%] gap-2">
           {
-            itemInfo?.acc?.map((v) => {
+            itemInfo?.acc?.map((v, i) => {
               return (
-                <Accessories acc={ v } key={ v.name }></Accessories>
+                <Accessories acc={ v } key={ v.name + i }></Accessories>
               )
             })
           }

@@ -11,24 +11,32 @@ module.exports = {
       set: "font-size: .75rem, line-height: 1rem",
     },
     colors: {
-      blue: "#0056FF",
-      gold: "#C19F63",
-      green: "#5CC566",
-      red: "#FF4B3E",
-      orange: "#FE7849",
-      yellow: "#FFC428",
-      white: "#FFFFFF",
-      ancient: "#A88B6D",
-      brown: "#3D3325",
-      brown020: "#DCC999",
-      black: "#000",
-      black020: "#1C1F26",
-      black030: "#15181d",
-      option: "#2B313A",
-      gray: "#C9CDD2",
-      gray2: "#C2C2CC",
+      // 흰색 계열
+      white1: "#ffffff",
+      // 검정 계열
+      black1: "#2b313a",
+      black2: "#1c1f26",
+      black3: "#15181d",
+      black4: "#464c56",
+      // 회색 계열
+      gray1: "#c2c2cc",
+      gray2: "#c9cdd2",
       gray3: "#535960",
-      gray4: "#454B50",
+      // 금색 계열
+      gold1: "#997b3b",
+      gold2: "#eddab3",
+      gold3: "#ff5e00",
+      // 파랑 계열
+      blue1: "#3cf2e6",
+      blue2: "#0054ff",
+      // 빨강 계열
+      red1: "#ff0000",
+      // 주황 계열
+      orange1: "#a78300",
+      // 초록 계열
+      green1: "#09ae09",
+      // 핑크 계열
+      pink1: "#ff00dd",
       transparent: "transparent",
     },
     boxShadow: {

@@ -1,65 +1,44 @@
 .bg {
-  &-grade2 {
+  &-grade2 { // 고대
     background: linear-gradient(135deg,#3d3325,#dcc999);
   }
-  &-grade3 {
+  &-grade3 { // 유물
     background: linear-gradient(135deg,#3d3325,#FA5D00);
   }
-  &-grade4 {
+  &-grade4 { // 전설
     background: linear-gradient(135deg,#3d3325,#F99200);
   }
-  &-grade5 {
-    background: linear-gradient(135deg,#111f2c,#113d5d);
-  }
-  &-grade6 {
+  &-grade5 { // 영웅
     background: linear-gradient(135deg,#261331,#480d5d);
   }
-  &-quGold {
+  &-grade6 { // 희귀
+    background: linear-gradient(135deg,#111f2c,#113d5d);
+  }
+  &-grade7 { // 에스더
+    background: linear-gradient(135deg,#0c2e2c,#2faba8);
+  }
+  // 실린 캐릭터 프로필 background
+  &-purple-rg {
+    transition: all 1s ease-out 0s;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(200, 19, 236, 0.6) 0%, rgba(255, 105, 0, 0) 100%);
+  }
+  // return 값으로 style 적용시 안되는 오류가 있어서 같은 이름으로 설정해둠
+  &-gold3 {
     background: #FF5E00;
   }
-  &-quPink {
+  &-pink1 {
     background: #FF00DD;
   }
-  &-quBlue {
+  &-blue2 {
     background: #0054FF;
   }
-  &-quGreen {
+  &-green1 {
     background: #09AE09;
   }
-  &-quOrange {
+  &-orange1 {
     background: #A78300;
   }
-  &-quRed {
+  &-red1 {
     background: #FF0000;
-  }
-  // 검정 계열
-  &-black1 {
-    background: #2b313a;
-  }
-  // 회색 계열
-  &-gray1 {
-    background: #c2c2cc;
-  }
-  // 빨간 계열
-  &-red05 {
-    background: rgba(254,46,46,0.5);
-  }
-}
-
-.color {
-  // 회색 계열
-  &-gray1 {
-    color: #c2c2cc
-  }
-  // 금색 계열
-  &-gold1 {
-    color: #997b3b;
-  }
-  &-gold2 {
-    color: #eddab3;
-  }
-  // 파랑 계역
-  &-blue1 {
-    color: #3cf2e6;
   }
 }

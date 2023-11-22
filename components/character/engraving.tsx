@@ -16,7 +16,7 @@ const Engraving = ({ engraving }: EngravingPropType) => {
                 <img src={ v.Icon }/>
               </i>
               <span className="text-xl">{ v.Name.replace(/[ㄱ-힁]|[a-z]|[.]/gi, '') }</span>
-              <span className="text-sm leading-none color-gray1">{ v.Name.replace(/[a-z]|[.]|\d/gi, '') }</span>
+              <span className="text-sm leading-none text-gray1">{ v.Name.replace(/[a-z]|[.]|\d/gi, '') }</span>
             </div>
           );
         })

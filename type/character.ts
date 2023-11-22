@@ -82,6 +82,7 @@ export interface EquipmentType {
 export interface customItemsType {
   acc: customAccType[];
   item: customEquipmentType[];
+  bracelet: any;
   total_set: any[];
 }
 

@@ -14,7 +14,7 @@ const InputContainer = ({ style }: inputContainerType) => {
       <input
         type="text"
         value={name}
-        className={`${ style } p-4 border border-gray3 rounded-md bg-gray3 text-white`}
+        className={`${ style } p-4 border border-gray3 rounded-md bg-gray3 text-white1`}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
         onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
           if (!name) return false;

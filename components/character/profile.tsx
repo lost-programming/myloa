@@ -12,11 +12,12 @@ const CharacterProfile = ({ profile }: ProfileProps) => {
   if (!profile) return (<></>);
 
   return (
-    <div className="flex flex-col relative h-64 p-6 overflow-hidden bg-negative-fixed-more text-positive-fixed border rounded-lg">
+    <div className="flex flex-col relative h-64 p-6 overflow-hidden bg-negative-fixed-more text-positive-fixed">
       {/* 캐릭터 이미지 */}
-      {/*<div className="absolute -translate-x-1/2 left-[50%] -top-12">*/}
-      {/*  <img src={ profile?.CharacterImage } className="min-w-[408px] w-[408px]"/>*/}
-      {/*</div>*/}
+      <div className="absolute -translate-x-1/2 left-[50%] -top-12">
+        <img src={ profile?.CharacterImage } className="min-w-[408px] w-[408px]"/>
+      </div>
+      <div className="absolute w-[48rem] h-[48rem] -translate-x-1/2 -translate-y-1/2 left-24 -top-24 mix-blend-screen bg-purple-rg"></div>
       {/* 서버이름, 직업 및 즐겨찾기 버튼 TODO: 즐겨찾기 버튼 추가 */}
       <div className="space-x-2">
         <SmallBoxText text={ profile?.ServerName } />
@@ -26,7 +27,7 @@ const CharacterProfile = ({ profile }: ProfileProps) => {
       <div className="flex justify-between mt-[30px]">
         <div className="flex flex-col">
           <span className="text-2xl">{ profile?.CharacterName }</span>
-          <span className="text-base color-gray1">{ profile?.Title }</span>
+          <span className="text-base text-gray1">{ profile?.Title }</span>
         </div>
         <div className="flex flex-col items-end space-y-2">
           <RowBoxText title={ profile?.GuildName } boxText="길드" />

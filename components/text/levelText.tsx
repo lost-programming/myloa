@@ -6,7 +6,7 @@ interface LevelTextType {
 const LevelText = ({ title, level }: LevelTextType) => {
   return (
     <div className="flex flex-col">
-      <span className="text-base color-gray1">{ title }</span>
+      <span className="text-base text-gray1">{ title }</span>
       <span className="text-xl">{ level }</span>
     </div>
   );
