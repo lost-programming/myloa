@@ -126,14 +126,21 @@ export const getEngrave = (tooltip: any) => {
       .map((v: any) => v.contentStr.replace(/(<(.*?)>|([(](.*?)[)])|활성도|[\[\]+/])/gi, "").replace(/\s{2,}/g, " "));
     return engraves;
   }
-}
+};
 
 // 팔찌 정보
 export const getBracelet = (item: any) => {
   const tooltip = JSON.parse(item[0].Tooltip);
   // https://ojjy.tistory.com/106 < 정규식 참고
-  let effectList = tooltip.Element_004.value.Element_001.split("<BR>").map((v: any) => v.replace(/(<(.*?)>)|[+]|([(](.*?)[)])|(].*$)/gi, "").trim());
-  console.log(effectList);
+  /**
+   * 1. 특성, 기본옵션, 추가옵션 구분 -> 방어구 구분한 방식으로 해결해야될거같음
+   * 2. 특수옵션 replace 어떻게 할지 고민 -> 똥 마렵네
+   * 3. 간단한 정보랑 상세 정보 2개로 분리 -> 2번이 해결되면 쉽게 해결 가능
+   * */
+  let effectList = tooltip.Element_004.value.Element_001.split("<BR>").map((v: any) => v.replace(/(<(.*?)>)|[+]/gi, "").trim());
+
+  // console.log(effectList);
+
   const bracelet = {
     type: item[0].Type,
     grade: item[0].Grade,
@@ -142,7 +149,7 @@ export const getBracelet = (item: any) => {
   };
 
   return bracelet;
-}
+};
 
 // 품질별 색깔
 export const qualityColor = (quality: number) => {

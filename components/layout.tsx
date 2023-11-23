@@ -3,9 +3,9 @@ import Header from "./layout/header";
 
 const Layout = ({ children }: any) => {
   return (
-    <div>
+    <div className="flex">
       <Header/>
-      <div className="w-[1280px] h-full py-[80px] my-0 mx-auto">
+      <div className="w-full h-full">
         { children }
       </div>
     </div>

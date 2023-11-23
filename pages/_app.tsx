@@ -24,7 +24,7 @@ function MyLoa({ Component, pageProps }: AppProps) {
           <Layout>
             <Component {...pageProps} />
           </Layout>
-        </RecoilRoot>`
+        </RecoilRoot>
       </QueryClientProvider>
     </>
   )
