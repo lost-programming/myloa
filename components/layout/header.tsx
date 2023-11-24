@@ -6,7 +6,7 @@ const Header = () => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col p-3 w-50 h-full gap-3 border-r-[1px] border-black4">
+    <div className="flex flex-col p-3 w-50 h-full gap-3">
       <nav className="list-none">
         <ul>
           <li className="flex items-center cursor-pointer" onClick={() => router.push('/')}>

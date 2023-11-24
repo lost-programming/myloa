@@ -130,23 +130,31 @@ export const getEngrave = (tooltip: any) => {
 
 // 팔찌 정보
 export const getBracelet = (item: any) => {
+  const statsNames = ["치명", "신속", "특화", "인내", "제압", "숙련"];
   const tooltip = JSON.parse(item[0].Tooltip);
   // https://ojjy.tistory.com/106 < 정규식 참고
   /**
    * 1. 특성, 기본옵션, 추가옵션 구분 -> 방어구 구분한 방식으로 해결해야될거같음
-   * 2. 특수옵션 replace 어떻게 할지 고민 -> 똥 마렵네
+   * 2. 특수옵션 replace 어떻게 할지 고민
    * 3. 간단한 정보랑 상세 정보 2개로 분리 -> 2번이 해결되면 쉽게 해결 가능
    * */
   let effectList = tooltip.Element_004.value.Element_001.split("<BR>").map((v: any) => v.replace(/(<(.*?)>)|[+]/gi, "").trim());
-
-  // console.log(effectList);
 
   const bracelet = {
     type: item[0].Type,
     grade: item[0].Grade,
     icon: item[0].Icon,
     name: item[0].Name,
+    stats: effectList.filter((v: any) => statsNames.includes(v.replace(/\d|\s/g, ""))),
+    special_option: effectList.filter((v: any) => !statsNames.includes(v.replace(/\d|\s/g, ""))).join("").split("["),
+    simple_option: [],
   };
+
+  bracelet.simple_option = bracelet.special_option.map((v: any) => {
+    if (v.includes("]")) return v.replace(/].*$/g, "");
+  }).filter((v: any) => v !== undefined);
+
+  console.log(bracelet);
 
   return bracelet;
 };
