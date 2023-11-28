@@ -1,4 +1,4 @@
-import { customAccType, customEquipmentType, customItemsType, EquipmentType } from "../type/character";
+import { CustomBraceletType, CustomAccType, CustomEquipmentType, CustomItemsType, EquipmentType } from "../type/character";
 
 // string sum
 export const sumString = (s1: string, s2: string) => {
@@ -10,7 +10,7 @@ export const equipmentDataUpdate = (data: EquipmentType[]) => {
   const itemText = ["무기", "투구", "상의", "하의", "장갑", "어깨"];
   const accText = ["목걸이", "귀걸이", "반지", "어빌리티 스톤"];
 
-  let eqData: customItemsType = {
+  let eqData: CustomItemsType = {
     item: data.filter((v) => itemText.includes(v.Type)).map((v) => weaponDataInfo(v)),
     acc: data.filter((v) => accText.includes(v.Type)).map((v) => getAccDataInfo(v)),
     bracelet: getBracelet(data.filter((v) => v.Type === "팔찌")),
@@ -40,7 +40,7 @@ export const weaponDataInfo = (wData: EquipmentType) => {
   const tooltip = JSON.parse(wData.Tooltip);
   const indentList = Object.values(tooltip).filter((v: any) => v.type === "IndentStringGroup");
 
-  const item: customEquipmentType = {
+  const item: CustomEquipmentType = {
     type: wData.Type,
     grade: wData.Grade,
     icon: wData.Icon,
@@ -83,6 +83,25 @@ export const getElixirInfo = (tooltip: any, type: string) => {
   }
 };
 
+// 엘릭서 총합 구하기
+export const TotalElixirSum = (items: CustomEquipmentType[]) => {
+  const elixir_list = items.filter((v) => v.elixir).map((v) => v.elixir);
+  const count = elixir_list.reduce((acc: any, cur: any) => {
+    if (cur.length > 1) acc += +cur[0][1] + +cur[1][1];
+    else acc += +cur[0][1];
+    return acc;
+  }, 0);
+  return count;
+};
+
+// 엘릭서 활성화 옵션 구하기
+export const ActiveElixirOption = (items: CustomEquipmentType[]) => {
+  const elixir_list: CustomEquipmentType[] | [] = items.filter((v) => v.total_elixir);
+
+  // @ts-ignore
+  return elixir_list[0]?.total_elixir.replace(/[()]/g, " ").trim().split(" ");
+};
+
 // 초월 정보 추출
 export const getTranscend = (tooltip: any) => {
   const transcendList = tooltip.filter((v: any) => v.value.Element_000.topStr.includes("초월"));
@@ -96,7 +115,7 @@ export const getTranscend = (tooltip: any) => {
 export const getAccDataInfo = (aData: EquipmentType) => {
   const tooltip = JSON.parse(aData.Tooltip);
 
-  const item: customAccType = {
+  const item: CustomAccType = {
     type: aData.Type,
     grade: aData.Grade,
     icon: aData.Icon,
@@ -116,7 +135,7 @@ export const getStat = (tooltip: any) => {
     stats = stats[1].value.Element_001.split("<BR>");
     return stats;
   }
-}
+};
 
 // 각인 정보 추출
 export const getEngrave = (tooltip: any) => {
@@ -130,7 +149,9 @@ export const getEngrave = (tooltip: any) => {
 
 // 팔찌 정보
 export const getBracelet = (item: any) => {
-  const statsNames = ["치명", "신속", "특화", "인내", "제압", "숙련"];
+  if (item.length <= 0) return undefined;
+
+  const statsNames = [ "치명", "신속", "특화", "인내", "제압", "숙련" ];
   const tooltip = JSON.parse(item[0].Tooltip);
   // https://ojjy.tistory.com/106 < 정규식 참고
   /**
@@ -140,7 +161,7 @@ export const getBracelet = (item: any) => {
    * */
   let effectList = tooltip.Element_004.value.Element_001.split("<BR>").map((v: any) => v.replace(/(<(.*?)>)|[+]/gi, "").trim());
 
-  const bracelet = {
+  const bracelet: CustomBraceletType = {
     type: item[0].Type,
     grade: item[0].Grade,
     icon: item[0].Icon,
@@ -153,8 +174,6 @@ export const getBracelet = (item: any) => {
   bracelet.simple_option = bracelet.special_option.map((v: any) => {
     if (v.includes("]")) return v.replace(/].*$/g, "");
   }).filter((v: any) => v !== undefined);
-
-  console.log(bracelet);
 
   return bracelet;
 };

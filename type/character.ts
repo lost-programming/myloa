@@ -11,13 +11,13 @@ export interface CharacterResponseTypes {
   ArmorySkills: any;
   Collectibles: any;
   ColosseumInfo: any;
-}
+};
 
 // 공식 API 캐릭터 사용중인 각인 Type
 export interface CharacterEngravingTypes {
   Effects: EngravingType[];
   Engravings: EngravingBookType[];
-}
+};
 
 // 공식 API 캐릭터 Profile Type
 export interface CharacterProfileTypes {
@@ -39,35 +39,35 @@ export interface CharacterProfileTypes {
   TownLevel: number; // 영지 레벨
   TownName: string; // 영지 이름
   UsingSkillPoint: number; // 사용중인 스킬포인트
-}
+};
 
 // 스탯 Type
 export interface StatsType {
   Type: string;
   Value: string;
   Tooltip: string[];
-}
+};
 
 // 성향 Type
 export interface TendenciesType {
   Type: string;
   Point: number;
   MaxPoint: number;
-}
+};
 
 // 적용중인 각인 Type
 export interface EngravingType {
   Icon: string;
   Name: string;
   Description: string;
-}
+};
 
 // 각인서 Type
 export interface EngravingBookType {
   Slot: number;
   Name: string;
   Tooltip: string;
-}
+};
 
 // 장착중인 장비 Type
 export interface EquipmentType {
@@ -76,18 +76,18 @@ export interface EquipmentType {
   Icon: string;
   Grade: string;
   Tooltip: string;
-}
+};
 
 // 커스텀 장비, 악세 response
-export interface customItemsType {
-  acc: customAccType[];
-  item: customEquipmentType[];
-  bracelet: any;
+export interface CustomItemsType {
+  acc: CustomAccType[];
+  item: CustomEquipmentType[];
+  bracelet: CustomBraceletType | undefined;
   total_set: any[];
-}
+};
 
 // 커스텀 장비 정보 Type
-export interface customEquipmentType {
+export interface CustomEquipmentType {
   type: string;
   grade: string;
   icon: string
@@ -101,7 +101,7 @@ export interface customEquipmentType {
 }
 
 // 커스텀 악세 정보 Type
-export interface customAccType {
+export interface CustomAccType {
   type: string;
   grade: string;
   icon: string;
@@ -110,3 +110,15 @@ export interface customAccType {
   engraves: string[];
   stat: string[];
 }
+
+// 커스텀 팔찌 정보 Type
+export interface CustomBraceletType {
+  type: string;
+  grade: string;
+  icon: string;
+  name: string;
+  stats: string[];
+  special_option: string[];
+  simple_option: string[],
+}
+
