@@ -6,9 +6,7 @@ interface ElixirPropsType {
 }
 
 const Elixir = ({ items }: ElixirPropsType) => {
-  if (!items) return <></>;
-
-  if (TotalElixirSum(items) <= 0) return <></>;
+  if (!items || TotalElixirSum(items) <= 0) return <></>;
 
   return (
     <div className="">

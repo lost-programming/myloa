@@ -1,9 +1,9 @@
-import { customAccType } from "../../../type/character";
+import { CustomAccType } from "../../../type/character";
 import { itemBackground, qualityColor } from "../../../utils/dataFormat";
 import SmallColorText from "../../text/smallColorText";
 
 interface AccessoriesPropType {
-  acc: customAccType;
+  acc: CustomAccType;
 }
 
 const Accessories = ({ acc }: AccessoriesPropType) => {

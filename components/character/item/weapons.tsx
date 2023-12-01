@@ -1,9 +1,9 @@
-import { customEquipmentType } from "../../../type/character";
+import { CustomEquipmentType } from "../../../type/character";
 import SmallColorText from "../../text/smallColorText";
 import { itemBackground, qualityColor } from "../../../utils/dataFormat";
 
 interface WeaponsPropTypes {
-  item: customEquipmentType;
+  item: CustomEquipmentType;
 }
 
 const Weapons = ({ item }: WeaponsPropTypes) => {

@@ -111,6 +111,19 @@ export const getTranscend = (tooltip: any) => {
   }
 };
 
+// 초월 평균 구하기
+export const TranscendAvg = (items: CustomEquipmentType[]) => {
+  const transcend_list = items.filter((v) => v.transcend);
+
+  const count = transcend_list.reduce((acc, cur) => {
+    // @ts-ignore
+    acc += +cur.transcend?.count;
+    return acc;
+  }, 0);
+
+  return count;
+};
+
 // 악세 정보 추출
 export const getAccDataInfo = (aData: EquipmentType) => {
   const tooltip = JSON.parse(aData.Tooltip);

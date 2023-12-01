@@ -8,6 +8,7 @@ import Weapons from "./item/weapons";
 import Accessories from "./item/accessories";
 import Bracelet from "./item/bracelet";
 import Elixir from "./item/elixir";
+import Transcend from "./item/transcend";
 
 interface EquipmentsPropType {
   items: any;
@@ -63,6 +64,7 @@ const Equipments = ({items}: EquipmentsPropType) => {
       <div className="grid grid-flow-col pt-4 empty:hidden">
         <Bracelet item={ itemInfo?.bracelet }/>
         <Elixir items={ itemInfo?.item }/>
+        <Transcend items={ itemInfo?.item }/>
       </div>
     </DefaultContainer>
   )
