@@ -16,9 +16,9 @@ const Weapons = ({ item }: WeaponsPropTypes) => {
       <div className="flex items-center leading-none text-sm gap-x-4">
         <div className="flex flex-col gap-1">
           {/* 장비 타입, 아이템 레벨, 강화 단계, 품질 표시 */}
-          <div className="flex items-center">
-            <span className="w-[4.25em]">{ item.type } +{ item.enhance }</span>
-            <SmallColorText text={ item.itemLevel } style="w-[3.25em] text-gray1 mr-[8px] border border-[#464c56]"/>
+          <div className="flex items-center gap-1.5">
+            <span className="w-fit">{ item.type } +{ item.enhance }</span>
+            <SmallColorText text={ item.itemLevel } style="w-[3.25em] text-gray1 border border-[#464c56]"/>
             <SmallColorText text={ String(item.quality) } style={`w-[2.5em] text-white1 ${ qualityColor(item.quality) }`}/>
           </div>
           {/* 초월 */}

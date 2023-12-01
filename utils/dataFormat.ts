@@ -1,4 +1,11 @@
-import { CustomBraceletType, CustomAccType, CustomEquipmentType, CustomItemsType, EquipmentType } from "../type/character";
+import {
+  CustomBraceletType,
+  CustomAccType,
+  CustomEquipmentType,
+  CustomItemsType,
+  EquipmentType,
+  CharacterGemsType, CustomGemType
+} from "../type/character";
 
 // string sum
 export const sumString = (s1: string, s2: string) => {
@@ -189,6 +196,31 @@ export const getBracelet = (item: any) => {
   }).filter((v: any) => v !== undefined);
 
   return bracelet;
+};
+
+// 보석 정보 정렬
+export const sortGemsInfo = (gems: CharacterGemsType) => {
+  gems.Effects.sort((a, b) => a.GemSlot - b.GemSlot);
+
+  const gem_list = gems.Gems.map((v, i) => {
+    const gem: CustomGemType = {
+      grade: v.Grade,
+      icon: v.Icon,
+      level: v.Level,
+      name: v.Name.replace(/(<(.*?)>)/g, ""),
+      type: v.Name.replace(/(<(.*?)>)|[^홍염|멸화]|/g, ""),
+      skill_icon: gems.Effects[i].Icon,
+      skill_name: gems.Effects[i].Name,
+      skill_description: gems.Effects[i].Description
+    };
+
+    return gem;
+  });
+
+  return  {
+    attack: gem_list.filter((v) => v.type === "멸화").sort((a, b) => b.level - a.level),
+    reuse: gem_list.filter((v) => v.type === "홍염").sort((a, b) => b.level - a.level)
+  };
 };
 
 // 품질별 색깔

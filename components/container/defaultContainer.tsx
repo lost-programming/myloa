@@ -1,3 +1,5 @@
+import React from "react";
+
 interface DefaultContainerType {
   children: any;
   style?: string;

@@ -42,3 +42,15 @@
     background: #FF0000;
   }
 }
+
+.scroll-none::-webkit-scrollbar  {
+  display: none;
+  -ms-overflow-style: none;  /* IE and 엣지 */
+  scrollbar-width: none;  /* 파이어폭스 */
+}
+
+.transition {
+  &-02 {
+    transition: all ease 0.2s 0s;
+  }
+}

@@ -23,6 +23,7 @@ module.exports = {
       gray2: "#c9cdd2",
       gray3: "#535960",
       gray4: "#8f8f98",
+      gray5: "#eeeeee",
       // 금색 계열
       gold1: "#997b3b",
       gold2: "#eddab3",

@@ -6,7 +6,7 @@ export interface CharacterResponseTypes {
   ArmoryCard: any;
   ArmoryEngraving: CharacterEngravingTypes;
   ArmoryEquipment: EquipmentType[];
-  ArmoryGem: any;
+  ArmoryGem: CharacterGemsType;
   ArmoryProfile: CharacterProfileTypes;
   ArmorySkills: any;
   Collectibles: any;
@@ -39,6 +39,12 @@ export interface CharacterProfileTypes {
   TownLevel: number; // 영지 레벨
   TownName: string; // 영지 이름
   UsingSkillPoint: number; // 사용중인 스킬포인트
+};
+
+// 공식 API 착용중인 보석 Type
+export interface CharacterGemsType {
+  Effects: GemEffectType[];
+  Gems: GemType[];
 };
 
 // 스탯 Type
@@ -77,6 +83,25 @@ export interface EquipmentType {
   Grade: string;
   Tooltip: string;
 };
+
+// 사용중인 보석 정보
+export interface GemType {
+  Grade: string;
+  Icon: string;
+  Level: number;
+  Name: string;
+  Slot: number;
+  Tooltip: string;
+}
+
+// 사용중인 보석 효과 정보 
+export interface GemEffectType {
+  Description: string;
+  GemSlot: number;
+  Icon: string;
+  Name: string;
+  Tooltip: string;
+}
 
 // 커스텀 장비, 악세 response
 export interface CustomItemsType {
@@ -122,3 +147,20 @@ export interface CustomBraceletType {
   simple_option: string[],
 }
 
+// 커스텀 보석 리스트 type
+export interface CustomGemListType {
+  attack: CustomGemType[];
+  reuse: CustomGemType[];
+}
+
+// 커스텀 보석 정보 type
+export interface CustomGemType {
+  grade: string;
+  icon: string;
+  level: number;
+  name: string;
+  type: string;
+  skill_icon: string;
+  skill_name: string;
+  skill_description: string;
+}
