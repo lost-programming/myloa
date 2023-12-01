@@ -1,5 +1,6 @@
 import { CustomEquipmentType } from "../../../type/character";
 import { TranscendAvg } from "../../../utils/dataFormat";
+import { useEffect, useState } from "react";
 
 interface TranscendPropsType {
   items: CustomEquipmentType[] | undefined;
@@ -8,6 +9,11 @@ interface TranscendPropsType {
 const Transcend = ({ items }: TranscendPropsType) => {
   if (!items || TranscendAvg(items) <= 0) return <></>;
 
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setTotal(TranscendAvg(items));
+  }, [items]);
 
   return (
     <div className="">
@@ -19,10 +25,10 @@ const Transcend = ({ items }: TranscendPropsType) => {
               className="w-4 h-4 saturate-50"
               src="https://cdn-lostark.game.onstove.com/2018/obt/assets/images/common/game/ico_tooltip_transcendence.png"
             />
-            <span>합계 { TranscendAvg(items) }</span>
+            <span>합계 { total }</span>
           </p>
           <p className="flex leading-none text-sm">
-            평균 { (TranscendAvg(items) / 15).toFixed(1) }단계
+            평균 { (total / 15).toFixed(1) }단계
           </p>
         </div>
       </div>
