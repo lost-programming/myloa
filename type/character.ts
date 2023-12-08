@@ -3,7 +3,7 @@ import { getElixirInfo, getSetItemInfo, getTranscend } from "../utils/dataFormat
 
 export interface CharacterResponseTypes {
   ArmoryAvatars: any;
-  ArmoryCard: any;
+  ArmoryCard: CharacterCardsType;
   ArmoryEngraving: CharacterEngravingTypes;
   ArmoryEquipment: EquipmentType[];
   ArmoryGem: CharacterGemsType;
@@ -46,6 +46,12 @@ export interface CharacterGemsType {
   Effects: GemEffectType[];
   Gems: GemType[];
 };
+
+// 공식 API 착용중인 카드 Type
+export interface CharacterCardsType {
+  Cards: CardType[];
+  Effects: CardEffectType[];
+}
 
 // 스탯 Type
 export interface StatsType {
@@ -101,6 +107,30 @@ export interface GemEffectType {
   Icon: string;
   Name: string;
   Tooltip: string;
+}
+
+// 사용중인 카드 정보
+export interface CardType {
+  AwakeCount: number;
+  AwakeTotal: number;
+  Grade: string;
+  Icon: string;
+  Name: string;
+  Slot: number;
+  Tooltip: string;
+}
+
+// 사용중인 카드 효과 정보
+export interface CardEffectType {
+  CardSlot: number[];
+  Index: number;
+  Items: CardEffectDetail[];
+}
+
+// 카드 효과 상세
+export interface CardEffectDetail {
+  Name: string;
+  Description: string;
 }
 
 // 커스텀 장비, 악세 response

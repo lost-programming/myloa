@@ -9,6 +9,7 @@ import Engraving from "../../components/character/engraving";
 import Equipments from "../../components/character/equipments";
 import Blank from "../../components/blank";
 import Gems from "../../components/character/gems";
+import Cards from "../../components/character/cards";
 
 interface Types {
   data: CharacterResponseTypes | undefined;
@@ -38,6 +39,7 @@ const CharacterInfo = () => {
         <div className="flex flex-col flex-1 gap-4">
           <Equipments items={ data?.ArmoryEquipment ? data.ArmoryEquipment : [] }/>
           <Gems gemList={ data?.ArmoryGem }/>
+          <Cards cards={ data?.ArmoryCard }/>
         </div>
       </div>
     </div>

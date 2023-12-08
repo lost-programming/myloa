@@ -20,7 +20,7 @@ const Bracelet = ({ item }: BraceletPropsType) => {
         <div className="flex flex-col gap-1 space-y-1">
           <p className="leading-none text-sm flex gap-2 text-gray1">
             {
-              item?.stats.map((stat) => <span key={ "bracelet" + stat }>{ stat }</span>)
+              item?.stats.map((stat) => <span className="font-[600]" key={ "bracelet" + stat }>{ stat }</span>)
             }
           </p>
           <p className="leading-none text-sm flex gap-2">

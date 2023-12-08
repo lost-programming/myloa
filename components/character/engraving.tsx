@@ -10,9 +10,11 @@ const Engraving = ({ engraving }: EngravingPropType) => {
   const [books, setBooks] = useState<string[]>();
 
   useEffect(() => {
-    setBooks(engraving?.Engravings.map((v) => {
-      return JSON.parse(v.Tooltip).Element_001.value.leftText.replace(/(<(.*?)>)|각인 활성 포인트|\s/g, "") + ' ' + v.Name;
-    }));
+    if (engraving?.Engravings) {
+      setBooks(engraving?.Engravings.map((v) => {
+        return JSON.parse(v.Tooltip).Element_001.value.leftText.replace(/(<(.*?)>)|각인 활성 포인트|\s/g, "") + ' ' + v.Name;
+      }));
+    }
   }, [engraving]);
 
   return (

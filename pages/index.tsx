@@ -6,13 +6,8 @@ const Home = () => {
   const router = useRouter();
   return (
     <div className="flex flex-col items-center justify-center">
-      <InputContainer style={'w-[500px] h-[50px]'}/>
-
-      <div className="flex justify-center mt-8">
-        <LinkButton
-          text={'일일 에포나 정보 test'} style={'w-[120px] h-[48px]'}
-          onClick={() => router.push('/info/배부른나무늘보')}
-        />
+      <div className="py-4 text-center">
+        <InputContainer style={'w-[500px] h-[50px]'} placeHolder="캐릭터 검색"/>
       </div>
     </div>
   )
