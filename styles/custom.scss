@@ -43,6 +43,47 @@
   }
 }
 
+// 카드 테두리
+.bg-position {
+  &_legend {
+    background-position: 80.15%, 0;
+  }
+  &_hero {
+    background-position: 60.05%, 0;
+  }
+  &_rare {
+    background-position: 39.95%, 0;
+  }
+  &_high {
+    background-position: 19.85%, 0;
+  }
+  &_normal {
+    background-position: 0%, 0;
+  }
+}
+
+// 카드 각성 단계 표시
+.cLeft {
+  &-0 {
+    left: -0%;
+  }
+  &-20 {
+    left: -20%;
+  }
+  &-40 {
+    left: -40%;
+  }
+  &-60 {
+    left: -60%;
+  }
+  &-80 {
+    left: -80%;
+  }
+  &-100 {
+    left: -100%;
+  }
+}
+
 .scroll-none::-webkit-scrollbar  {
   display: none;
   -ms-overflow-style: none;  /* IE and 엣지 */

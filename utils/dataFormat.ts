@@ -200,6 +200,8 @@ export const getBracelet = (item: any) => {
 
 // 보석 정보 정렬
 export const sortGemsInfo = (gems: CharacterGemsType) => {
+  if (!gems) return { attack: [], reuse: [] };
+
   gems.Effects.sort((a, b) => a.GemSlot - b.GemSlot);
 
   const gem_list = gems.Gems.map((v, i) => {
@@ -223,6 +225,18 @@ export const sortGemsInfo = (gems: CharacterGemsType) => {
   };
 };
 
+// 카드 단계 replace
+export const cardEffectText = (effect: string) => {
+  if (effect.includes("(")) {
+    return effect.replace(/\D/g, "").length > 2 ?
+      effect.replace(/.+(?=\d\d각성)|합계|[)]/g, "") :
+      effect.replace(/.+(?=\d각성)|합계|[)]/g, "")
+  } else {
+    return effect.replace(/.+(?=\d세트)/g, "");
+  }
+  return "";
+};
+
 // 품질별 색깔
 export const qualityColor = (quality: number) => {
   if (quality === 100) {
@@ -237,6 +251,24 @@ export const qualityColor = (quality: number) => {
     return 'bg-orange1';
   } else {
     return 'bg-red1';
+  }
+};
+
+// 카드 등급별 테두리
+export const cardGradeBorder = (grade: string) => {
+  switch (grade) {
+    case "전설":
+      return "bg-position_legend";
+    case "영웅":
+      return "bg-position_hero";
+    case "희귀":
+      return "bg-position_rare";
+    case "고급":
+      return "bg-position_high";
+    case "일반":
+      return "bg-position_normal";
+    default:
+      return "bg-position_high";
   }
 };
 
