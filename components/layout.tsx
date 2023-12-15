@@ -5,7 +5,7 @@ const Layout = ({ children }: any) => {
   return (
     <div className="flex font-sans">
       <Header/>
-      <div className="relative w-full h-[100vh] overflow-y-auto border-x-[1px] border-black4 scroll-none">
+      <div className="relative w-full h-[100vh] pb-[60px] overflow-y-auto border-x-[1px] border-black4 scroll-none">
         { children }
       </div>
     </div>
