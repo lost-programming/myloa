@@ -23,9 +23,9 @@ const Equipments = ({items}: EquipmentsPropType) => {
     }
   }, [ items ]);
 
-  useEffect(() => {
-    console.log(itemInfo);
-  }, [ itemInfo ]);
+  // useEffect(() => {
+  //   console.log(itemInfo);
+  // }, [ itemInfo ]);
 
   return (
     <DefaultContainer>

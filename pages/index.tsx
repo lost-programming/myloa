@@ -1,6 +1,6 @@
-import LinkButton from "../components/button/linkButton";
 import { useRouter } from "next/router";
 import InputContainer from "../components/container/inputContainer";
+import withHead from "../hoc/withHead";
 
 const Home = () => {
   const router = useRouter();
@@ -13,4 +13,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default withHead(Home);

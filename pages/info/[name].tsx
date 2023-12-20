@@ -10,6 +10,7 @@ import Equipments from "../../components/character/equipments";
 import Blank from "../../components/blank";
 import Gems from "../../components/character/gems";
 import Cards from "../../components/character/cards";
+import withHead from "../../hoc/withHead";
 
 interface Types {
   data: CharacterResponseTypes | undefined;
@@ -46,4 +47,4 @@ const CharacterInfo = () => {
   )
 };
 
-export default CharacterInfo;
+export default withHead(CharacterInfo, ` | ㅁㅁㅁㅁㅁ`, "");

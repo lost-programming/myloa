@@ -16,7 +16,6 @@ const Gems = ({ gemList }: GemsPropType) => {
 
   useEffect(() => {
     setGemsInfo(sortGemsInfo(gemList));
-    console.log(sortGemsInfo(gemList));
   }, [gemList]);
 
   return (

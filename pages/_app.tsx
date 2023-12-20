@@ -1,9 +1,11 @@
-import type { AppProps } from 'next/app'
-import '../styles/app.scss';
-import { RecoilRoot } from 'recoil'
-import Layout from "../components/layout";
-import { useRef } from "react";
+import type { AppProps } from 'next/app';
+import React, { useRef } from "react";
+import { RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import '../styles/app.scss';
+import Layout from "../components/layout";
+import withHead from "../hoc/withHead";
 
 function MyLoa({ Component, pageProps }: AppProps) {
   const queryClientRef = useRef<QueryClient>();
@@ -30,4 +32,4 @@ function MyLoa({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyLoa
+export default MyLoa;
