@@ -24,7 +24,7 @@ const withHead = (Component: any, title?: string, description?: string) => {
           <meta property="og:title" content="My Loa | 캐릭터 전투정보 검색 사이트" />
           <meta property="og:description" content="원하는 캐릭터의 전투정보를 검색해보세요." />
           {/*<meta property="og:url" content="" />*/}
-          {/*<meta property="og:url" content="https://user-images.githubusercontent.com/97172321/219431038-2bb12055-5cb9-4712-849b-aa3a1ed366d0.png" />*/}
+          {/*<meta property="og:url" content="/images/main_banner.png" />*/}
 
           {/* Favicon */}
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
