@@ -1,5 +1,6 @@
 // 공식 API Response
 import { getElixirInfo, getSetItemInfo, getTranscend } from "../utils/dataFormat";
+import exp from "constants";
 
 export interface CharacterResponseTypes {
   ArmoryAvatars: any;
@@ -8,7 +9,7 @@ export interface CharacterResponseTypes {
   ArmoryEquipment: EquipmentType[];
   ArmoryGem: CharacterGemsType;
   ArmoryProfile: CharacterProfileTypes;
-  ArmorySkills: any;
+  ArmorySkills: UseSkillType[];
   Collectibles: any;
   ColosseumInfo: any;
 };
@@ -133,13 +134,44 @@ export interface CardEffectDetail {
   Description: string;
 }
 
+// 사용중인 스킬 정보 Type
+export interface UseSkillType {
+  Icon: string;
+  IsAwakening: boolean;
+  Level: number;
+  Name: string;
+  Rune: RuneType;
+  Tooltip: string;
+  Tripods: TripodType[];
+  Type: string;
+}
+
+// 룬 Type
+export interface RuneType {
+  Grade: string;
+  Icon: string;
+  Name: string;
+  Tooltip: string;
+}
+
+// 트포 Type
+export interface TripodType {
+  Icon: string;
+  IsSelected: boolean;
+  Level: number;
+  Name: string;
+  Slot: number;
+  Tier: number;
+  Tooltip: string;
+}
+
 // 커스텀 장비, 악세 response
 export interface CustomItemsType {
   acc: CustomAccType[];
   item: CustomEquipmentType[];
   bracelet: CustomBraceletType | undefined;
   total_set: any[];
-};
+}
 
 // 커스텀 장비 정보 Type
 export interface CustomEquipmentType {

@@ -11,6 +11,7 @@ import Blank from "../../components/blank";
 import Gems from "../../components/character/gems";
 import Cards from "../../components/character/cards";
 import withHead from "../../hoc/withHead";
+import Skills from "../../components/character/skills";
 
 interface Types {
   data: CharacterResponseTypes | undefined;
@@ -41,10 +42,11 @@ const CharacterInfo = () => {
           <Equipments items={ data?.ArmoryEquipment ? data.ArmoryEquipment : [] }/>
           <Gems gemList={ data?.ArmoryGem }/>
           <Cards cards={ data?.ArmoryCard }/>
+          <Skills skillList={ data?.ArmorySkills } profile={ data?.ArmoryProfile }/>
         </div>
       </div>
     </div>
   )
 };
 
-export default withHead(CharacterInfo, ` | ㅁㅁㅁㅁㅁ`, "");
+export default withHead(CharacterInfo, "", "");
